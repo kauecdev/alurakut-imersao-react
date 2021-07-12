@@ -1,11 +1,36 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
+import { AlurakutStyles } from '../src/lib/AlurakutCommons';
 
 const GlobalStyle = createGlobalStyle`
-  body {
+  * {
     margin: 0;
     padding: 0;
+    outline: 0;
     box-sizing: border-box;
   }
+
+  body {
+    font-family: sans-serif;
+    background-color: #d0e6f6;
+  }
+
+  #__next {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  img.profileImageHome { 
+    border-radius: 8px;
+  }
+
+  ${AlurakutStyles}
 `
 
 const theme = {
