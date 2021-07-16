@@ -1,8 +1,7 @@
-import { useState } from 'react'; 
+import { useEffect, useState } from 'react'; 
 import MainGrid from '../src/components/MainGrid';
 import Box from '../src/components/Box';
 import { AlurakutMenu, AlurakutProfileSidebarMenuDefault, OrkutNostalgicIconSet } from '../src/lib/AlurakutCommons';
-import { ProfileRelationsBoxWrapper } from '../src/components/ProfileRelations';
 import BoxWithImageWrapper from '../src/components/BoxWithImageWrapper';
 
 function ProfileSidebar({ githubUser }) {
@@ -10,7 +9,7 @@ function ProfileSidebar({ githubUser }) {
     <Box as="aside">
       <img className="profileImageHome" src={`http://github.com/${githubUser}.png`}/>
       <hr/>
-
+ 
       <p>
         <a className="boxLink" href={`https://github.com/${githubUser}`}>
           @{githubUser}
@@ -38,6 +37,18 @@ export default function Home() {
     'marcobrunodev',
     'felipefialho'
   ];
+
+  const [seguidores, setSeguidores] = useState([]);
+
+  useEffect(() => {
+    fetch('http://api.github.com/users/kauecdev/followers')
+    .then((response) => {
+      return response.json();
+    })
+    .then((response) => {
+      setSeguidores(response);
+    });
+  }, []);
 
   const handleCreateCommunity = (e) => {
     e.preventDefault();
@@ -100,6 +111,8 @@ export default function Home() {
           <BoxWithImageWrapper title="Pessoas da comunidade" data={pessoasFavoritas} />
 
           <BoxWithImageWrapper title="Comunidades" data={comunidades} />
+
+          <BoxWithImageWrapper title="Seguidores" data={seguidores} />
         </div>
       </MainGrid>
     </>

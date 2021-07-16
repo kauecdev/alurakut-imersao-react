@@ -4,7 +4,6 @@ import { ProfileRelationsBoxWrapper } from "../ProfileRelations";
 const BoxWithImageWrapper = ({ title='', data=[] }) => {
     const topSixData = data.slice(0, 6);
 
-    console.log(topSixData)
     return (
         <ProfileRelationsBoxWrapper>
             <h2 className="smallTitle">
