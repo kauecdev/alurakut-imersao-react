@@ -23,8 +23,8 @@ const BoxWithImageWrapper = ({ title='', data=[] }) => {
                         
                     :  
                         <li key={item.id}>
-                            <a href={`/users/${item.title}`}>
-                                <img src={item.image} />
+                            <a href={`/communities/${item.id}`}>
+                                <img src={item.imageUrl} />
                                 <span>{item.title}</span>
                             </a>
                         </li>
